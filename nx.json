@@ -36,6 +36,9 @@
     "cakes-web-e2e": {
       "tags": [],
       "implicitDependencies": ["cakes-web"]
+    },
+    "models": {
+      "tags": []
     }
   }
 }
