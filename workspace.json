@@ -13,7 +13,9 @@
             "outputPath": "dist/apps/cakes-api",
             "main": "apps/cakes-api/src/main.ts",
             "tsConfig": "apps/cakes-api/tsconfig.app.json",
-            "assets": ["apps/cakes-api/src/assets"]
+            "assets": ["apps/cakes-api/src/assets"],
+            "generatePackageJson": true
+
           },
           "configurations": {
             "production": {
@@ -72,7 +74,9 @@
             ],
             "styles": ["apps/cakes-web/src/styles.css"],
             "scripts": [],
-            "webpackConfig": "@nrwl/react/plugins/webpack"
+            "webpackConfig": "@nrwl/react/plugins/webpack",
+            "generatePackageJson": true
+
           },
           "configurations": {
             "production": {
