@@ -81,172 +81,62 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports) {
+/******/ ({
 
-module.exports = require("tslib");
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("@nestjs/common");
-
-/***/ }),
-/* 2 */
+/***/ "./apps/cakes-api/src/app/app.controller.ts":
+/*!**************************************************!*\
+  !*** ./apps/cakes-api/src/app/app.controller.ts ***!
+  \**************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(0);
-tslib_1.__exportStar(__webpack_require__(9), exports);
-tslib_1.__exportStar(__webpack_require__(3), exports);
-
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrismaClientService = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const client_1 = __webpack_require__(10);
-let PrismaClientService = class PrismaClientService extends client_1.PrismaClient {
-    onModuleInit() {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            yield this.$connect();
-        });
-    }
-    onModuleDestroy() {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            yield this.$disconnect();
-        });
-    }
-    enableShutdownHooks(app) {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            this.$on('beforeExit', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
-                yield app.close();
-            }));
-        });
+exports.AppController = void 0;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+let AppController = class AppController {
+    healthCheck() {
+        return 'OK!';
     }
 };
-PrismaClientService = tslib_1.__decorate([
-    common_1.Injectable()
-], PrismaClientService);
-exports.PrismaClientService = PrismaClientService;
+tslib_1.__decorate([
+    common_1.Get(),
+    tslib_1.__metadata("design:type", Function),
+    tslib_1.__metadata("design:paramtypes", []),
+    tslib_1.__metadata("design:returntype", void 0)
+], AppController.prototype, "healthCheck", null);
+AppController = tslib_1.__decorate([
+    common_1.Controller()
+], AppController);
+exports.AppController = AppController;
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-var _a;
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.CakesService = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const prisma_client_1 = __webpack_require__(2);
-let CakesService = class CakesService {
-    constructor(prisma) {
-        this.prisma = prisma;
-    }
-    findAll() {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            return this.prisma.cake.findMany();
-        });
-    }
-    create(cake) {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            return this.prisma.cake.create({
-                data: Object.assign(Object.assign({}, cake), { yumFactor: Number(cake.yumFactor) }),
-            });
-        });
-    }
-    delete(id) {
-        return tslib_1.__awaiter(this, void 0, void 0, function* () {
-            return this.prisma.cake.delete({
-                where: {
-                    id: Number(id),
-                },
-            });
-        });
-    }
-};
-CakesService = tslib_1.__decorate([
-    common_1.Injectable(),
-    tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof prisma_client_1.PrismaClientService !== "undefined" && prisma_client_1.PrismaClientService) === "function" ? _a : Object])
-], CakesService);
-exports.CakesService = CakesService;
-
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(6);
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const core_1 = __webpack_require__(7);
-const app_module_1 = __webpack_require__(8);
-function bootstrap() {
-    return tslib_1.__awaiter(this, void 0, void 0, function* () {
-        const app = yield core_1.NestFactory.create(app_module_1.AppModule);
-        const globalPrefix = 'api';
-        app.setGlobalPrefix(globalPrefix);
-        const port = process.env.PORT || 3333;
-        yield app.listen(port, () => {
-            common_1.Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
-        });
-    });
-}
-bootstrap();
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports) {
-
-module.exports = require("@nestjs/core");
-
-/***/ }),
-/* 8 */
+/***/ "./apps/cakes-api/src/app/app.module.ts":
+/*!**********************************************!*\
+  !*** ./apps/cakes-api/src/app/app.module.ts ***!
+  \**********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const prisma_client_1 = __webpack_require__(2);
-const serve_static_1 = __webpack_require__(11); // <- INSERT LINE
-const app_controller_1 = __webpack_require__(12);
-const app_service_1 = __webpack_require__(13);
-const cakes_module_1 = __webpack_require__(14);
-const path_1 = __webpack_require__(18);
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_client_1 = __webpack_require__(/*! @waracle-test/prisma-client */ "./libs/prisma-client/src/index.ts");
+const serve_static_1 = __webpack_require__(/*! @nestjs/serve-static */ "@nestjs/serve-static"); // <- INSERT LINE
+const app_controller_1 = __webpack_require__(/*! ./app.controller */ "./apps/cakes-api/src/app/app.controller.ts");
+const app_service_1 = __webpack_require__(/*! ./app.service */ "./apps/cakes-api/src/app/app.service.ts");
+const cakes_module_1 = __webpack_require__(/*! ../modules/cakes/cakes.module */ "./apps/cakes-api/src/modules/cakes/cakes.module.ts");
+const path_1 = __webpack_require__(/*! path */ "path");
 let AppModule = class AppModule {
 };
 AppModule = tslib_1.__decorate([
@@ -267,77 +157,20 @@ exports.AppModule = AppModule;
 
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrismaClientModule = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const prisma_client_service_1 = __webpack_require__(3);
-let PrismaClientModule = class PrismaClientModule {
-};
-PrismaClientModule = tslib_1.__decorate([
-    common_1.Global(),
-    common_1.Module({
-        providers: [prisma_client_service_1.PrismaClientService],
-        exports: [prisma_client_service_1.PrismaClientService],
-    })
-], PrismaClientModule);
-exports.PrismaClientModule = PrismaClientModule;
-
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("@prisma/client");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("@nestjs/serve-static");
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppController = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-let AppController = class AppController {
-    healthCheck() {
-        return 'OK!';
-    }
-};
-tslib_1.__decorate([
-    common_1.Get(),
-    tslib_1.__metadata("design:type", Function),
-    tslib_1.__metadata("design:paramtypes", []),
-    tslib_1.__metadata("design:returntype", void 0)
-], AppController.prototype, "healthCheck", null);
-AppController = tslib_1.__decorate([
-    common_1.Controller()
-], AppController);
-exports.AppController = AppController;
-
-
-/***/ }),
-/* 13 */
+/***/ "./apps/cakes-api/src/app/app.service.ts":
+/*!***********************************************!*\
+  !*** ./apps/cakes-api/src/app/app.service.ts ***!
+  \***********************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppService = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 let AppService = class AppService {
     getData() {
         return { message: 'Welcome to cakes-api!' };
@@ -350,31 +183,46 @@ exports.AppService = AppService;
 
 
 /***/ }),
-/* 14 */
+
+/***/ "./apps/cakes-api/src/main.ts":
+/*!************************************!*\
+  !*** ./apps/cakes-api/src/main.ts ***!
+  \************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
+/**
+ * This is not a production server yet!
+ * This is only a minimal backend to get started.
+ */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CakesModule = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const cakes_controller_1 = __webpack_require__(15);
-const cakes_service_1 = __webpack_require__(4);
-let CakesModule = class CakesModule {
-};
-CakesModule = tslib_1.__decorate([
-    common_1.Module({
-        imports: [],
-        controllers: [cakes_controller_1.CakesController],
-        providers: [cakes_service_1.CakesService],
-    })
-], CakesModule);
-exports.CakesModule = CakesModule;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
+const app_module_1 = __webpack_require__(/*! ./app/app.module */ "./apps/cakes-api/src/app/app.module.ts");
+function bootstrap() {
+    return tslib_1.__awaiter(this, void 0, void 0, function* () {
+        const app = yield core_1.NestFactory.create(app_module_1.AppModule);
+        const globalPrefix = 'api';
+        app.setGlobalPrefix(globalPrefix);
+        const port = process.env.PORT || 3333;
+        yield app.listen(port, () => {
+            common_1.Logger.log('Listening at http://localhost:' + port + '/' + globalPrefix);
+        });
+    });
+}
+bootstrap();
 
 
 /***/ }),
-/* 15 */
+
+/***/ "./apps/cakes-api/src/modules/cakes/cakes.controller.ts":
+/*!**************************************************************!*\
+  !*** ./apps/cakes-api/src/modules/cakes/cakes.controller.ts ***!
+  \**************************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -382,10 +230,10 @@ exports.CakesModule = CakesModule;
 var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CakesController = void 0;
-const tslib_1 = __webpack_require__(0);
-const common_1 = __webpack_require__(1);
-const models_1 = __webpack_require__(16);
-const cakes_service_1 = __webpack_require__(4);
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const models_1 = __webpack_require__(/*! @waracle-test/models */ "./libs/models/src/index.ts");
+const cakes_service_1 = __webpack_require__(/*! ./cakes.service */ "./apps/cakes-api/src/modules/cakes/cakes.service.ts");
 let CakesController = class CakesController {
     constructor(cakesService) {
         this.cakesService = cakesService;
@@ -434,18 +282,107 @@ exports.CakesController = CakesController;
 
 
 /***/ }),
-/* 16 */
+
+/***/ "./apps/cakes-api/src/modules/cakes/cakes.module.ts":
+/*!**********************************************************!*\
+  !*** ./apps/cakes-api/src/modules/cakes/cakes.module.ts ***!
+  \**********************************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = __webpack_require__(0);
-tslib_1.__exportStar(__webpack_require__(17), exports);
+exports.CakesModule = void 0;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const cakes_controller_1 = __webpack_require__(/*! ./cakes.controller */ "./apps/cakes-api/src/modules/cakes/cakes.controller.ts");
+const cakes_service_1 = __webpack_require__(/*! ./cakes.service */ "./apps/cakes-api/src/modules/cakes/cakes.service.ts");
+let CakesModule = class CakesModule {
+};
+CakesModule = tslib_1.__decorate([
+    common_1.Module({
+        imports: [],
+        controllers: [cakes_controller_1.CakesController],
+        providers: [cakes_service_1.CakesService],
+    })
+], CakesModule);
+exports.CakesModule = CakesModule;
 
 
 /***/ }),
-/* 17 */
+
+/***/ "./apps/cakes-api/src/modules/cakes/cakes.service.ts":
+/*!***********************************************************!*\
+  !*** ./apps/cakes-api/src/modules/cakes/cakes.service.ts ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var _a;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CakesService = void 0;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_client_1 = __webpack_require__(/*! @waracle-test/prisma-client */ "./libs/prisma-client/src/index.ts");
+let CakesService = class CakesService {
+    constructor(prisma) {
+        this.prisma = prisma;
+    }
+    findAll() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            return this.prisma.cake.findMany();
+        });
+    }
+    create(cake) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            return this.prisma.cake.create({
+                data: Object.assign(Object.assign({}, cake), { yumFactor: Number(cake.yumFactor) }),
+            });
+        });
+    }
+    delete(id) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            return this.prisma.cake.delete({
+                where: {
+                    id: Number(id),
+                },
+            });
+        });
+    }
+};
+CakesService = tslib_1.__decorate([
+    common_1.Injectable(),
+    tslib_1.__metadata("design:paramtypes", [typeof (_a = typeof prisma_client_1.PrismaClientService !== "undefined" && prisma_client_1.PrismaClientService) === "function" ? _a : Object])
+], CakesService);
+exports.CakesService = CakesService;
+
+
+/***/ }),
+
+/***/ "./libs/models/src/index.ts":
+/*!**********************************!*\
+  !*** ./libs/models/src/index.ts ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+tslib_1.__exportStar(__webpack_require__(/*! ./lib/cake */ "./libs/models/src/lib/cake.ts"), exports);
+
+
+/***/ }),
+
+/***/ "./libs/models/src/lib/cake.ts":
+/*!*************************************!*\
+  !*** ./libs/models/src/lib/cake.ts ***!
+  \*************************************/
+/*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -454,11 +391,170 @@ Object.defineProperty(exports, "__esModule", { value: true });
 
 
 /***/ }),
-/* 18 */
+
+/***/ "./libs/prisma-client/src/index.ts":
+/*!*****************************************!*\
+  !*** ./libs/prisma-client/src/index.ts ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+tslib_1.__exportStar(__webpack_require__(/*! ./lib/prisma-client.module */ "./libs/prisma-client/src/lib/prisma-client.module.ts"), exports);
+tslib_1.__exportStar(__webpack_require__(/*! ./lib/prisma-client.service */ "./libs/prisma-client/src/lib/prisma-client.service.ts"), exports);
+
+
+/***/ }),
+
+/***/ "./libs/prisma-client/src/lib/prisma-client.module.ts":
+/*!************************************************************!*\
+  !*** ./libs/prisma-client/src/lib/prisma-client.module.ts ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PrismaClientModule = void 0;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const prisma_client_service_1 = __webpack_require__(/*! ./prisma-client.service */ "./libs/prisma-client/src/lib/prisma-client.service.ts");
+let PrismaClientModule = class PrismaClientModule {
+};
+PrismaClientModule = tslib_1.__decorate([
+    common_1.Global(),
+    common_1.Module({
+        providers: [prisma_client_service_1.PrismaClientService],
+        exports: [prisma_client_service_1.PrismaClientService],
+    })
+], PrismaClientModule);
+exports.PrismaClientModule = PrismaClientModule;
+
+
+/***/ }),
+
+/***/ "./libs/prisma-client/src/lib/prisma-client.service.ts":
+/*!*************************************************************!*\
+  !*** ./libs/prisma-client/src/lib/prisma-client.service.ts ***!
+  \*************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PrismaClientService = void 0;
+const tslib_1 = __webpack_require__(/*! tslib */ "tslib");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
+const client_1 = __webpack_require__(/*! @prisma/client */ "@prisma/client");
+let PrismaClientService = class PrismaClientService extends client_1.PrismaClient {
+    onModuleInit() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            yield this.$connect();
+        });
+    }
+    onModuleDestroy() {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            yield this.$disconnect();
+        });
+    }
+    enableShutdownHooks(app) {
+        return tslib_1.__awaiter(this, void 0, void 0, function* () {
+            this.$on('beforeExit', () => tslib_1.__awaiter(this, void 0, void 0, function* () {
+                yield app.close();
+            }));
+        });
+    }
+};
+PrismaClientService = tslib_1.__decorate([
+    common_1.Injectable()
+], PrismaClientService);
+exports.PrismaClientService = PrismaClientService;
+
+
+/***/ }),
+
+/***/ 0:
+/*!******************************************!*\
+  !*** multi ./apps/cakes-api/src/main.ts ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\Users\Michael\Documents\Developement\waracle-test\apps\cakes-api\src\main.ts */"./apps/cakes-api/src/main.ts");
+
+
+/***/ }),
+
+/***/ "@nestjs/common":
+/*!*********************************!*\
+  !*** external "@nestjs/common" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nestjs/common");
+
+/***/ }),
+
+/***/ "@nestjs/core":
+/*!*******************************!*\
+  !*** external "@nestjs/core" ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nestjs/core");
+
+/***/ }),
+
+/***/ "@nestjs/serve-static":
+/*!***************************************!*\
+  !*** external "@nestjs/serve-static" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@nestjs/serve-static");
+
+/***/ }),
+
+/***/ "@prisma/client":
+/*!*********************************!*\
+  !*** external "@prisma/client" ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("@prisma/client");
+
+/***/ }),
+
+/***/ "path":
+/*!***********************!*\
+  !*** external "path" ***!
+  \***********************/
+/*! no static exports found */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
+/***/ }),
+
+/***/ "tslib":
+/*!************************!*\
+  !*** external "tslib" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("tslib");
+
 /***/ })
-/******/ ])));
+
+/******/ })));
 //# sourceMappingURL=main.js.map

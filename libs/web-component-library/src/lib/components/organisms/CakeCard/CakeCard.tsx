@@ -17,6 +17,7 @@ export const CakeCard: React.FC<Props> = ({ imageUrl, name, onClick }) => {
       bg="white"
       minW="250px"
       onClick={onClick}
+      data-testid="cake-card"
     >
       <AspectRatio ratio={4 / 3}>
         <Image src={imageUrl} alt="cake" />

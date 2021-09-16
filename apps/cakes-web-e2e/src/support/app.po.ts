@@ -1,1 +1,1 @@
-export const getGreeting = () => cy.get('h1');
+export const getCards = () => cy.get('[data-testid="cake-card"]');

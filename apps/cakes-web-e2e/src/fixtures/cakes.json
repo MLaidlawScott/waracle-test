@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Sponge",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/ChocolateTruffleCakeIdeal01.JPG/220px-ChocolateTruffleCakeIdeal01.JPG",
+    "comment": "tasty cake",
+    "yumFactor": 5
+  },
+  {
+    "id": 2,
+    "name": "Chocolate",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/ChocolateTruffleCakeIdeal01.JPG/220px-ChocolateTruffleCakeIdeal01.JPG",
+    "comment": "tasty choco cake",
+    "yumFactor": 4
+  }
+]
