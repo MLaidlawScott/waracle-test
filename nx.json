@@ -27,6 +27,9 @@
     ]
   },
   "projects": {
+    "cakes-api": {
+      "tags": []
+    },
     "cakes-web": {
       "tags": []
     },

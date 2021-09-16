@@ -1,6 +1,57 @@
 {
   "version": 2,
   "projects": {
+    "cakes-api": {
+      "root": "apps/cakes-api",
+      "sourceRoot": "apps/cakes-api/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/cakes-api",
+            "main": "apps/cakes-api/src/main.ts",
+            "tsConfig": "apps/cakes-api/tsconfig.app.json",
+            "assets": ["apps/cakes-api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/cakes-api/src/environments/environment.ts",
+                  "with": "apps/cakes-api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "cakes-api:build"
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cakes-api/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/cakes-api"],
+          "options": {
+            "jestConfig": "apps/cakes-api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "cakes-web": {
       "root": "apps/cakes-web",
       "sourceRoot": "apps/cakes-web/src",
@@ -52,7 +103,8 @@
           "executor": "@nrwl/web:dev-server",
           "options": {
             "buildTarget": "cakes-web:build",
-            "hmr": true
+            "hmr": true,
+            "proxyConfig": "apps/cakes-web/proxy.conf.json"
           },
           "configurations": {
             "production": {
