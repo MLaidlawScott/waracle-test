@@ -7,7 +7,14 @@ interface Props {
 
 export const CakeCard: React.FC<Props> = ({ imageUrl, name }) => {
   return (
-    <Box borderWidth="1px" borderRadius="lg" maxW="sm" overflow="hidden">
+    <Box
+      borderWidth="1px"
+      borderRadius="lg"
+      maxW="sm"
+      overflow="hidden"
+      bg="white"
+      minW="250px"
+    >
       <AspectRatio ratio={4 / 3}>
         <Image src={imageUrl} alt="cake" />
       </AspectRatio>

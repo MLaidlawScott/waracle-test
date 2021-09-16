@@ -1,6 +1,6 @@
 import { Story, Meta } from '@storybook/react';
 
-import CakeDetailsCard, { Props } from './CakeDetailsCard';
+import CakeDetailsCard from './CakeDetailsCard';
 
 export default {
   component: CakeDetailsCard,

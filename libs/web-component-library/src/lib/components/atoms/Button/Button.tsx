@@ -8,7 +8,7 @@ interface Props extends ButtonProps {
 export const Button: React.FC<Props> = ({ color = 'primary', ...props }) => {
   return (
     <CUIButton {...props} colorScheme={color}>
-      Hello
+      {props.children}
     </CUIButton>
   );
 };

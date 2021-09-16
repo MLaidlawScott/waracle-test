@@ -1,7 +1,7 @@
 import { Box, AspectRatio, Image, Text, Center, Flex } from '../../atoms';
 import { StarIcon } from '@chakra-ui/icons';
 
-export interface Props {
+interface Props {
   imageUrl: string;
   name: string;
   comment: string;
@@ -15,7 +15,14 @@ export const CakeDetailsCard: React.FC<Props> = ({
   yumFactor,
 }) => {
   return (
-    <Box borderWidth="1px" borderRadius="lg" maxW="sm" overflow="hidden">
+    <Box
+      borderWidth="1px"
+      borderRadius="lg"
+      maxW="sm"
+      overflow="hidden"
+      bg="white"
+      minW="250px"
+    >
       <AspectRatio ratio={4 / 3}>
         <Image src={imageUrl} alt="cake" />
       </AspectRatio>

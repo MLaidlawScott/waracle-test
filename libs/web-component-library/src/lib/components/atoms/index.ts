@@ -6,5 +6,6 @@ export * from './ChakraProvider/ChakraProvider';
 export * from './Flex/Flex';
 export * from './Heading/Heading';
 export * from './Image/Image';
+export * from './Spinner/Spinner';
 export * from './Stack/Stack';
 export * from './Text/Text';
