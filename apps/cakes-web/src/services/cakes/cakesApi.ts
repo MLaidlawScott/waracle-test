@@ -8,7 +8,16 @@ export const cakesApi = createApi({
     getCakes: builder.query<Cake[], void>({
       query: () => 'cakes',
     }),
+    addCake: builder.mutation<Cake, any>({
+      query(body) {
+        return {
+          url: '/cakes',
+          method: 'POST',
+          body,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetCakesQuery } = cakesApi;
+export const { useGetCakesQuery, useAddCakeMutation } = cakesApi;

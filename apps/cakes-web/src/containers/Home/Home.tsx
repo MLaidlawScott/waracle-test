@@ -1,24 +1,29 @@
-import {
-  Box,
-  Header,
-  Center,
-  Button,
-} from '@waracle-test/web-component-library';
-
 import { useGetCakesQuery } from '../../services/cakes/cakesApi';
-import CakesList from '../../templates/CakesList/CakesList';
+import { useHistory } from 'react-router-dom';
+import HomePageTemplate from '../../templates/HomePageTemplate/HomePageTemplate';
 
 const Home = () => {
   const { data, error, isLoading } = useGetCakesQuery();
-  console.log(data);
+
+  const history = useHistory();
+
+  const handleCreateCake = () => {
+    history.push('/create');
+  };
+
+  const handleCakeCardClick = (id: number) => {
+    const cake = data?.find((cake) => cake.id === id);
+    history.push('/details', cake);
+  };
+
   return (
-    <Box w="100vw" h="100vh" backgroundColor="secondary.100">
-      <Header title="home" />
-      <Center p="4">
-        <Button variant="ghost">Add Cake</Button>
-      </Center>
-      <CakesList data={data} isLoading={isLoading} error={error} />
-    </Box>
+    <HomePageTemplate
+      onClickCreateCake={handleCreateCake}
+      data={data}
+      isLoading={isLoading}
+      error={!!error}
+      onClickCakeCard={handleCakeCardClick}
+    />
   );
 };
 

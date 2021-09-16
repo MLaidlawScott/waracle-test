@@ -330,7 +330,7 @@ let CakesService = class CakesService {
     create(cake) {
         return tslib_1.__awaiter(this, void 0, void 0, function* () {
             return this.prisma.cake.create({
-                data: Object.assign({}, cake),
+                data: Object.assign(Object.assign({}, cake), { yumFactor: Number(cake.yumFactor) }),
             });
         });
     }

@@ -3,9 +3,11 @@ import { Box, AspectRatio, Image, Text, Center } from '../../atoms';
 interface Props {
   imageUrl: string;
   name: string;
+  id: number;
+  onClick?: () => void;
 }
 
-export const CakeCard: React.FC<Props> = ({ imageUrl, name }) => {
+export const CakeCard: React.FC<Props> = ({ imageUrl, name, onClick }) => {
   return (
     <Box
       borderWidth="1px"
@@ -14,6 +16,7 @@ export const CakeCard: React.FC<Props> = ({ imageUrl, name }) => {
       overflow="hidden"
       bg="white"
       minW="250px"
+      onClick={onClick}
     >
       <AspectRatio ratio={4 / 3}>
         <Image src={imageUrl} alt="cake" />

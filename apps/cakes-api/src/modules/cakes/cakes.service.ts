@@ -14,6 +14,7 @@ export class CakesService {
     return this.prisma.cake.create({
       data: {
         ...cake,
+        yumFactor: Number(cake.yumFactor),
       },
     });
   }
