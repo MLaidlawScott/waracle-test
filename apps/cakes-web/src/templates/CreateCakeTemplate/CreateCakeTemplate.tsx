@@ -39,7 +39,7 @@ const createCakeSchema = Yup.object().shape({
 });
 
 export const CreateCakeTemplate: React.FC<Props> = ({ onSubmit }) => {
-  const intialValues: Omit<Cake, 'id'> = {
+  const initialValues: Omit<Cake, 'id'> = {
     name: '',
     comment: '',
     imageUrl: '',
@@ -51,10 +51,11 @@ export const CreateCakeTemplate: React.FC<Props> = ({ onSubmit }) => {
       <Center>
         <Box p="6">
           <Formik
-            initialValues={intialValues}
+            initialValues={initialValues}
             onSubmit={(values, actions) => {
               onSubmit(values);
               actions.setSubmitting(false);
+              actions.resetForm();
             }}
             validationSchema={createCakeSchema}
           >

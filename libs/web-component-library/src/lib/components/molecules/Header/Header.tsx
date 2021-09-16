@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Heading, Center } from '../../atoms';
+import { Box, Heading, Center, Text, Flex } from '../../atoms';
 
 interface Props {
   title: string;

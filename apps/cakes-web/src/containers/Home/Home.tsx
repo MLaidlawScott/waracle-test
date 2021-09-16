@@ -4,7 +4,6 @@ import HomePageTemplate from '../../templates/HomePageTemplate/HomePageTemplate'
 
 const Home = () => {
   const { data, error, isLoading } = useGetCakesQuery();
-
   const history = useHistory();
 
   const handleCreateCake = () => {

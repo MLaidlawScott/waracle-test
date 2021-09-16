@@ -1,4 +1,5 @@
 import { Box, Header } from '@waracle-test/web-component-library';
+import {} from '@chakra-ui/icons';
 
 interface Props {
   headerText: string;

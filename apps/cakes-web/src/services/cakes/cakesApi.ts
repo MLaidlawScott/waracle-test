@@ -8,7 +8,7 @@ export const cakesApi = createApi({
     getCakes: builder.query<Cake[], void>({
       query: () => 'cakes',
     }),
-    addCake: builder.mutation<Cake, any>({
+    addCake: builder.mutation<Cake, Omit<Cake, 'id'>>({
       query(body) {
         return {
           url: '/cakes',
@@ -17,7 +17,16 @@ export const cakesApi = createApi({
         };
       },
     }),
+    deleteCake: builder.mutation<Cake, number>({
+      query(id) {
+        return {
+          url: `/cakes/${id}`,
+          method: 'DELETE',
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetCakesQuery, useAddCakeMutation } = cakesApi;
+export const { useGetCakesQuery, useAddCakeMutation, useDeleteCakeMutation } =
+  cakesApi;
