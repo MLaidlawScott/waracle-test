@@ -4,9 +4,11 @@ import { Cake } from '@waracle-test/models';
 export const cakesApi = createApi({
   reducerPath: 'cakes',
   baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+  tagTypes: ['CAKES'],
   endpoints: (builder) => ({
     getCakes: builder.query<Cake[], void>({
       query: () => 'cakes',
+      providesTags: ['CAKES'],
     }),
     addCake: builder.mutation<Cake, Omit<Cake, 'id'>>({
       query(body) {
@@ -16,6 +18,7 @@ export const cakesApi = createApi({
           body,
         };
       },
+      invalidatesTags: ['CAKES'],
     }),
     deleteCake: builder.mutation<Cake, number>({
       query(id) {
@@ -24,6 +27,7 @@ export const cakesApi = createApi({
           method: 'DELETE',
         };
       },
+      invalidatesTags: ['CAKES'],
     }),
   }),
 });

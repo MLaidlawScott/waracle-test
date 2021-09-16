@@ -19,7 +19,7 @@ npm run cypress
 To run tests:
 
 ```
-npx nx run-many --all --target=test
+npm run test
 ```
 
 To run Storybook:
