@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@waracle-test/models": ["libs/models/src/index.ts"]
+      "@waracle-test/models": ["libs/models/src/index.ts"],
+      "@waracle-test/web-component-library": [
+        "libs/web-component-library/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
