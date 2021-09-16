@@ -1,0 +1,129 @@
+{
+  "version": 2,
+  "projects": {
+    "cakes-web": {
+      "root": "apps/cakes-web",
+      "sourceRoot": "apps/cakes-web/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/cakes-web",
+            "index": "apps/cakes-web/src/index.html",
+            "main": "apps/cakes-web/src/main.tsx",
+            "polyfills": "apps/cakes-web/src/polyfills.ts",
+            "tsConfig": "apps/cakes-web/tsconfig.app.json",
+            "assets": [
+              "apps/cakes-web/src/favicon.ico",
+              "apps/cakes-web/src/assets"
+            ],
+            "styles": ["apps/cakes-web/src/styles.css"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/cakes-web/src/environments/environment.ts",
+                  "with": "apps/cakes-web/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "cakes-web:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "cakes-web:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cakes-web/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/cakes-web"],
+          "options": {
+            "jestConfig": "apps/cakes-web/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "cakes-web-e2e": {
+      "root": "apps/cakes-web-e2e",
+      "sourceRoot": "apps/cakes-web-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/cakes-web-e2e/cypress.json",
+            "devServerTarget": "cakes-web:serve",
+            "tsConfig": "apps/cakes-web-e2e/tsconfig.json"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "cakes-web:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/cakes-web-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "generators": {
+    "@nrwl/react": {
+      "application": {
+        "style": "css",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "css"
+      },
+      "library": {
+        "style": "css",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "cakes-web"
+}
