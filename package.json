@@ -6,8 +6,10 @@
     "node": "16.4"
   },
   "scripts": {
-    "start": "node dist/apps/api/main",
-    "test": "nx test"
+    "start": "node dist/apps/cakes-api/main",
+    "test": "nx test",
+    "storybook": "nx run web-component-library:storybook",
+    "dev": "nx run-many --target=serve --projects=cakes-web,cakes-api --parallel"
   },
   "private": true,
   "dependencies": {
