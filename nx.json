@@ -46,6 +46,9 @@
     "models": {
       "tags": []
     },
+    "prisma-client": {
+      "tags": []
+    },
     "web-component-library": {
       "tags": []
     }

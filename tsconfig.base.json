@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@waracle-test/models": ["libs/models/src/index.ts"],
+      "@waracle-test/prisma-client": ["libs/prisma-client/src/index.ts"],
       "@waracle-test/web-component-library": [
         "libs/web-component-library/src/index.ts"
       ]
